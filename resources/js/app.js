@@ -13,9 +13,14 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 let routes = [
-    { path: '/dashboard', component: Foo },
-    { path: '/profile', component: Bar }
+    { path: '/dashboard', component: require('./components/Dashboard.vue') },
+    { path: '/profile', component: require('./components/Profile.vue') }
   ]
+
+  const router = new VueRouter({
+    mode: 'history',
+    routes // short for `routes: routes`
+  })
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -26,5 +31,6 @@ let routes = [
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });
